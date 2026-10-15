@@ -1,0 +1,27 @@
+# Versions tested on Python 3.12 (CPU) on 2026-10-15.
+# Install torch first. For CPU only:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.4
+pandas==3.0.6
+librosa==1.0.0
+soundfile==0.14.0
+transformers==5.19.0
+eng_to_ipa==0.0.2
+editdistance==0.8.1
+noisereduce==3.0.3
+matplotlib==3.11.2
+ipython==9.17.1
+python-dotenv==1.2.4
+
+# Live app / recording (microphone + voice activity detection; needs PortAudio, see README)
+sounddevice==0.5.6
+webrtcvad-wheels==2.0.14.post1
+
+# GPT feedback + ElevenLabs text-to-speech (paid APIs; keys go in .env)
+openai==3.31.0
+elevenlabs==2.72.0
+
+# Only used by side experiments (dataset_loader.py, phoneme_to_word.py, MFA/TextGrid scripts)
+datasets==5.1.0
+lexconvert==0.43
+TextGrid==1.6.1
