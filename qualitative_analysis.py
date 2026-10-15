@@ -138,10 +138,12 @@ def evaluate_model(attempts: int):
     with open("evaluation_results.txt", "w") as file:
         json.dump(results, file, indent=4)
 
-    # Calculate averages
-    avg_speed = sum(result["speed_score"] for result in results) / attempts
-    avg_accuracy = sum(result["accuracy_score"] for result in results) / attempts
-    avg_feedback_quality = sum(result["feedback_quality_score"] for result in results) / attempts
+    # Calculate averages over the samples actually scored (failed samples are skipped,
+    # and results may include rows loaded from a previous evaluation_results.csv)
+    n_scored = max(len(results), 1)
+    avg_speed = sum(result["speed_score"] for result in results) / n_scored
+    avg_accuracy = sum(result["accuracy_score"] for result in results) / n_scored
+    avg_feedback_quality = sum(result["feedback_quality_score"] for result in results) / n_scored
 
     # Print and save summary
     print("\nSummary of Evaluation:")
